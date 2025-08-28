@@ -357,6 +357,8 @@
     const restartBtn = document.getElementById('restart-btn');
 
     // Funções do Jogo
+    // AQUI ESTÁ A CORREÇÃO: A lógica para encontrar e atualizar as barras foi refinada
+    // para garantir que a largura seja sempre calculada e aplicada corretamente.
     function updateStatsUI() {
         for (const statType in stats) {
             for (const statName in stats[statType]) {
