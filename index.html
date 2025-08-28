@@ -63,6 +63,11 @@
         .restart-btn:hover {
             background-color: #805ad5;
         }
+        .unavailable-choice {
+            background-color: #3b424f;
+            color: #718096;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -149,8 +154,8 @@
             narrative: "O caminho da luz leva você a uma clareira onde uma criatura de cristal, ferida, chora. Seus cristais tremem, emitindo uma melodia dolorosa.",
             choices: [
                 { text: "Tente curar a criatura com um toque gentil.", next: 'heal_creature', virtues: { compassion: 2, wisdom: 1 } },
-                { text: "Ignore a criatura e procure um atalho, não há tempo para desvios.", next: 'ignore_creature', vices: { futility: 2 } },
-                { text: "Quebre um dos cristais para analisar a sua luz.", next: 'break_crystal', vices: { cruelty: 2 } }
+                { text: "Quebre um dos cristais para analisar a sua luz.", next: 'break_crystal', vices: { cruelty: 2 } },
+                { text: "Ignore a criatura e procure um atalho, não há tempo para desvios.", next: 'ignore_creature', vices: { futility: 2 } }
             ]
         },
         'path_of_shadow': {
@@ -164,19 +169,26 @@
         'heal_creature': {
             narrative: "Sua compaixão cura a criatura. Ela, em gratidão, revela que a próxima etapa da sua jornada está em um pântano e lhe entrega uma flor luminosa que repele as criaturas das trevas. Você continua sua jornada.",
             choices: [
-                { text: "Continue sua jornada para o pântano.", next: 'swamp_journey', virtues: { compassion: 1 } }
+                { text: "Continue sua jornada para o pântano.", next: 'swamp_journey', virtues: { compassion: 1 } },
+                { text: "[Requer Sabedoria: 2] Analise a criatura para aprender sua linguagem.", next: 'learn_language', virtues: { wisdom: 2, compassion: 1 }, required: { wisdom: 2 } }
             ]
         },
-        'ignore_creature': {
-            narrative: "Você ignora a criatura e corre pela floresta. A melodia dolorosa da criatura se mistura com os lamentos da floresta e você sente uma dor no peito. A escuridão ao seu redor cresce.",
+        'learn_language': {
+            narrative: "Você se comunica com a criatura de cristal. Ela revela que o Coração do Bosque está corrompido por um poderoso artefato sombrio e que a única forma de salvá-lo é destruí-lo. Ela te dá um amuleto que te protege das criaturas das trevas. Você continua sua jornada.",
             choices: [
-                { text: "Tente encontrar uma saída.", next: 'lost_in_the_forest', vices: { futility: 1 } }
+                { text: "Continue sua jornada para o pântano.", next: 'swamp_journey', virtues: { wisdom: 1 } }
             ]
         },
         'break_crystal': {
             narrative: "Você quebra o cristal, e a criatura grita de dor. O cristal se desintegra em poeira e você não encontra nada de valor. A floresta inteira treme e você sente a sua energia vital sendo drenada. Você continua sua jornada.",
             choices: [
                 { text: "Continue sua jornada. A dor da criatura parece ter te deixado mais forte.", next: 'gain_power_from_pain', vices: { cruelty: 1, ambition: 1 } }
+            ]
+        },
+        'ignore_creature': {
+            narrative: "Você ignora a criatura e corre pela floresta. A melodia dolorosa da criatura se mistura com os lamentos da floresta e você sente uma dor no peito. A escuridão ao seu redor cresce.",
+            choices: [
+                { text: "Tente encontrar uma saída.", next: 'lost_in_the_forest', vices: { futility: 1 } }
             ]
         },
         'solve_enigma': {
@@ -186,13 +198,39 @@
             ]
         },
         'jump_abyss': {
-            narrative: "Você pula o abismo, mas a sua coragem é falha. Você cai no abismo.",
+            narrative: "Você pula o abismo. Sua coragem é posta à prova.",
+            choices: [
+                { text: "[Requer Coragem: 2] Continue com o seu salto.", next: 'success_jump', virtues: { courage: 2 }, required: { courage: 2 } },
+                { text: "Desistir e retornar para a ponte.", next: 'fail_jump', vices: { futility: 2 } }
+            ]
+        },
+        'success_jump': {
+            narrative: "Você salta com sucesso e chega ao outro lado do abismo. No fundo do abismo, você encontra uma antiga adaga, capaz de cortar a escuridão. Você continua sua jornada.",
+            choices: [
+                { text: "Continue sua jornada.", next: 'deep_caves_of_shadows', virtues: { courage: 1 } }
+            ]
+        },
+        'fail_jump': {
+            narrative: "Você tenta pular, mas o abismo é muito grande. Você cai no abismo.",
             choices: [
                 { text: "O fim de sua jornada...", next: 'bad_end' }
             ]
         },
         'bribe_gargoyle': {
-            narrative: "Você oferece um objeto de valor à gárgula, mas ela não se move. Ela apenas ri de você e te empurra para o abismo.",
+            narrative: "Você oferece um objeto de valor à gárgula. Ela examina o item com interesse. Sua ambição é posta à prova.",
+            choices: [
+                { text: "[Requer Ambição: 2] Ofereça mais itens de valor para a gárgula.", next: 'bribe_success', vices: { ambition: 2 }, required: { ambition: 2 } },
+                { text: "O objeto não é suficiente. Deixe-a e retorne para a trilha principal.", next: 'bribe_fail' }
+            ]
+        },
+        'bribe_success': {
+            narrative: "Sua ambição impressiona a gárgula. Ela te mostra um caminho secreto, levando a um tesouro. Você se torna rico, mas sente uma dor de cabeça profunda. Você continua sua jornada.",
+            choices: [
+                { text: "Continue sua jornada.", next: 'deep_caves_of_shadows', vices: { ambition: 1 } }
+            ]
+        },
+        'bribe_fail': {
+            narrative: "O objeto não é suficiente. A gárgula ri de você e te empurra para o abismo.",
             choices: [
                 { text: "O fim de sua jornada...", next: 'bad_end' }
             ]
@@ -226,7 +264,7 @@
             narrative: "A caverna é silenciosa. Você avança até encontrar um enorme golem de pedra. O golem está dormindo e uma relíquia de grande poder está em suas mãos. O que você faz?",
             choices: [
                 { text: "Tente se aproximar silenciosamente e roubar a relíquia.", next: 'steal_relic', vices: { futility: 1, ambition: 1 } },
-                { text: "Tente acordar o golem com uma canção suave e pacífica.", next: 'wake_golem', virtues: { compassion: 1, wisdom: 1 } },
+                { text: "[Requer Sabedoria: 3] Tente acordar o golem com uma canção suave e pacífica.", next: 'wake_golem', virtues: { compassion: 1, wisdom: 1 }, required: { wisdom: 3 } },
                 { text: "Tente acordar o golem para uma luta.", next: 'fight_golem', vices: { cruelty: 1, ambition: 1 } }
             ]
         },
@@ -312,13 +350,43 @@
 
         narrativeTextEl.textContent = node.narrative;
         choicesContainerEl.innerHTML = '';
+
+        // Filter and display choices based on stat requirements
         node.choices.forEach(choice => {
+            let canTakeChoice = true;
+            if (choice.required) {
+                for (const statType in choice.required) {
+                    for (const statName in choice.required[statType]) {
+                        if (stats[statType][statName] < choice.required[statName]) {
+                            canTakeChoice = false;
+                            break;
+                        }
+                    }
+                    if (!canTakeChoice) break;
+                }
+            }
+
             const button = document.createElement('button');
-            button.className = "choice-button text-left text-white font-medium py-4 px-6 rounded-lg text-lg hover:bg-gray-700 transition-colors";
-            button.textContent = choice.text;
-            button.onclick = () => handleChoice(choice);
+            let buttonText = choice.text;
+            if (choice.required) {
+                 const requiredStatsText = Object.entries(choice.required.virtues || {}).map(([key, value]) => `[Requer ${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}]`).join(' ');
+                 buttonText = `${choice.text} ${requiredStatsText}`;
+            }
+
+            button.className = "choice-button text-left text-white font-medium py-4 px-6 rounded-lg text-lg transition-colors";
+            
+            if (canTakeChoice) {
+                button.classList.add('hover:bg-gray-700');
+                button.onclick = () => handleChoice(choice);
+            } else {
+                button.classList.add('unavailable-choice');
+                button.disabled = true;
+            }
+
+            button.textContent = buttonText;
             choicesContainerEl.appendChild(button);
         });
+
         updateStatsUI();
     }
 
