@@ -170,7 +170,7 @@
             narrative: "Sua compaixão cura a criatura. Ela, em gratidão, revela que a próxima etapa da sua jornada está em um pântano e lhe entrega uma flor luminosa que repele as criaturas das trevas. Você continua sua jornada.",
             choices: [
                 { text: "Continue sua jornada para o pântano.", next: 'swamp_journey', virtues: { compassion: 1 } },
-                { text: "[Requer Sabedoria: 2] Analise a criatura para aprender sua linguagem.", next: 'learn_language', virtues: { wisdom: 2, compassion: 1 }, required: { wisdom: 2 } }
+                { text: "Analise a criatura para aprender sua linguagem.", next: 'learn_language', virtues: { wisdom: 2, compassion: 1 }, required: { wisdom: 2 } }
             ]
         },
         'learn_language': {
@@ -200,7 +200,7 @@
         'jump_abyss': {
             narrative: "Você pula o abismo. Sua coragem é posta à prova.",
             choices: [
-                { text: "[Requer Coragem: 2] Continue com o seu salto.", next: 'success_jump', virtues: { courage: 2 }, required: { courage: 2 } },
+                { text: "Continue com o seu salto.", next: 'success_jump', virtues: { courage: 2 }, required: { courage: 2 } },
                 { text: "Desistir e retornar para a ponte.", next: 'fail_jump', vices: { futility: 2 } }
             ]
         },
@@ -219,7 +219,7 @@
         'bribe_gargoyle': {
             narrative: "Você oferece um objeto de valor à gárgula. Ela examina o item com interesse. Sua ambição é posta à prova.",
             choices: [
-                { text: "[Requer Ambição: 2] Ofereça mais itens de valor para a gárgula.", next: 'bribe_success', vices: { ambition: 2 }, required: { ambition: 2 } },
+                { text: "Ofereça mais itens de valor para a gárgula.", next: 'bribe_success', vices: { ambition: 2 }, required: { ambition: 2 } },
                 { text: "O objeto não é suficiente. Deixe-a e retorne para a trilha principal.", next: 'bribe_fail' }
             ]
         },
@@ -264,7 +264,7 @@
             narrative: "A caverna é silenciosa. Você avança até encontrar um enorme golem de pedra. O golem está dormindo e uma relíquia de grande poder está em suas mãos. O que você faz?",
             choices: [
                 { text: "Tente se aproximar silenciosamente e roubar a relíquia.", next: 'steal_relic', vices: { futility: 1, ambition: 1 } },
-                { text: "[Requer Sabedoria: 3] Tente acordar o golem com uma canção suave e pacífica.", next: 'wake_golem', virtues: { compassion: 1, wisdom: 1 }, required: { wisdom: 3 } },
+                { text: "Tente acordar o golem com uma canção suave e pacífica.", next: 'wake_golem', virtues: { compassion: 1, wisdom: 1 }, required: { wisdom: 3 } },
                 { text: "Tente acordar o golem para uma luta.", next: 'fight_golem', vices: { cruelty: 1, ambition: 1 } }
             ]
         },
@@ -301,8 +301,53 @@
             ]
         },
 
+        // Novas Rotas e Cenários
+        'swamp_journey_advanced': {
+            narrative: "Você atravessou o pântano e encontrou a entrada de uma antiga biblioteca, cheia de livros de conhecimento proibido.",
+            choices: [
+                { text: "Tente estudar os livros para obter conhecimento.", next: 'library_knowledge', virtues: { wisdom: 3 } },
+                { text: "Tente roubar um dos livros para vender.", next: 'library_steal', vices: { ambition: 2, cruelty: 1 } }
+            ]
+        },
+
+        'library_knowledge': {
+            narrative: "Você passa horas estudando os livros, e seu conhecimento sobre o bosque e seu coração aumenta. Agora você sabe que o coração está protegido por um guardião, e a única forma de passar por ele é decifrando um enigma.",
+            choices: [
+                { text: "Tente encontrar o guardião e resolver o enigma.", next: 'enigma_confrontation', virtues: { wisdom: 1 } }
+            ]
+        },
+
+        'library_steal': {
+            narrative: "Você rouba um livro de conhecimento e o vende no mercado negro. Você se torna rico, mas a floresta te amaldiçoa e você perde um pouco da sua energia vital.",
+            choices: [
+                { text: "Continue sua jornada.", next: 'deep_caves_of_shadows', vices: { futility: 1 } }
+            ]
+        },
+
+        'enigma_confrontation': {
+            narrative: "Você encontra o guardião do bosque. Ele te faz uma pergunta, mas você não tem certeza da resposta. Você vai para a batalha ou tenta resolver o enigma?",
+            choices: [
+                { text: "Tente resolver o enigma.", next: 'solve_enigma_2', virtues: { wisdom: 2 }, required: { wisdom: 3 } },
+                { text: "Tente lutar contra o guardião.", next: 'fight_guardian', vices: { cruelty: 2, ambition: 2 } }
+            ]
+        },
+
+        'solve_enigma_2': {
+            narrative: "Você resolve o enigma e o guardião te mostra o caminho para o coração do bosque. Você o restaura e se torna um herói.",
+            choices: [
+                { text: "Aceite o convite do guardião para ficar e proteger o bosque.", next: 'end_hero' }
+            ]
+        },
+
+        'fight_guardian': {
+            narrative: "Você tenta lutar contra o guardião, mas ele é muito poderoso. Ele te esmaga com a mão.",
+            choices: [
+                { text: "O fim de sua jornada...", next: 'bad_end' }
+            ]
+        },
+        
         // Endings
-        'bad_end': { narrative: "A escuridão do bosque te consumiu.", is_ending: true },
+        'bad_end': { narrative: "A escuridão do bosque te consumiu. A sua jornada termina, mas o seu legado de trevas apenas começou.", is_ending: true },
         'end_hero': { narrative: "Você restaurou o equilíbrio do bosque. As Virtudes que você cultivou te tornaram um herói. Seu nome é ecoado pelas árvores e você se torna um protetor da vida.", is_ending: true },
         'end_tyrant': { narrative: "Você usou o poder para seu próprio ganho. O bosque, outrora vibrante, agora se curva à sua vontade. As sombras te abraçam. Você se torna um tirano, mas solitário em sua ambição. A sua jornada termina, mas o seu reinado de trevas apenas começou.", is_ending: true }
     };
@@ -355,21 +400,26 @@
         node.choices.forEach(choice => {
             let canTakeChoice = true;
             if (choice.required) {
-                for (const statType in choice.required) {
-                    for (const statName in choice.required[statType]) {
-                        if (stats[statType][statName] < choice.required[statName]) {
+                // Check against required stats. The bug was in this loop logic.
+                // Now we check both virtues and vices correctly.
+                for (const stat in choice.required) {
+                    if (stats.virtues[stat] !== undefined) {
+                        if (stats.virtues[stat] < choice.required[stat]) {
                             canTakeChoice = false;
-                            break;
                         }
                     }
-                    if (!canTakeChoice) break;
+                    if (stats.vices[stat] !== undefined) {
+                        if (stats.vices[stat] < choice.required[stat]) {
+                            canTakeChoice = false;
+                        }
+                    }
                 }
             }
 
             const button = document.createElement('button');
             let buttonText = choice.text;
             if (choice.required) {
-                 const requiredStatsText = Object.entries(choice.required.virtues || {}).map(([key, value]) => `[Requer ${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}]`).join(' ');
+                 const requiredStatsText = Object.entries(choice.required).map(([key, value]) => `[Requer ${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}]`).join(' ');
                  buttonText = `${choice.text} ${requiredStatsText}`;
             }
 
