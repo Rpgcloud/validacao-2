@@ -143,36 +143,37 @@
 
 <script>
     // Dados do jogo: estrutura expandida para uma jornada mais longa
+    // Adicionado mais pontos em certas escolhas para garantir que os requisitos sejam atingidos
     const gameData = {
         'start': {
             narrative: "Você acorda sob a luz pálida da lua, no coração do Bosque Murmurante. Uma voz suave, mas persistente, ecoa em sua mente: 'Busque o Coração do Bosque. Só ele pode silenciar os lamentos desta terra'. Uma trilha se divide à sua frente. Para onde você vai?",
             choices: [
-                { text: "Siga o caminho da luz, que brilha com uma aura pacífica.", next: 'path_of_light', virtues: { courage: 1, compassion: 1 } },
-                { text: "Siga o caminho da sombra, que promete segredos ancestrais.", next: 'path_of_shadow', vices: { ambition: 1, futility: 1 } }
+                { text: "Siga o caminho da luz, que brilha com uma aura pacífica.", next: 'path_of_light', virtues: { courage: 2, compassion: 2 } },
+                { text: "Siga o caminho da sombra, que promete segredos ancestrais.", next: 'path_of_shadow', vices: { ambition: 2, futility: 2 } }
             ]
         },
         'path_of_light': {
             narrative: "O caminho da luz leva você a uma clareira onde uma criatura de cristal, ferida, chora. Seus cristais tremem, emitindo uma melodia dolorosa.",
             choices: [
-                { text: "Tente curar a criatura com um toque gentil.", next: 'heal_creature', virtues: { compassion: 2, wisdom: 1 } },
-                { text: "Quebre um dos cristais para analisar a sua luz.", next: 'break_crystal', vices: { cruelty: 2, futility: 1 } },
-                { text: "Ignore a criatura e procure um atalho, não há tempo para desvios.", next: 'ignore_creature', vices: { futility: 2 } }
+                { text: "Tente curar a criatura com um toque gentil.", next: 'heal_creature', virtues: { compassion: 3, wisdom: 2 } }, // Aumentado para 3 e 2 para alcançar o requisito de 2 de sabedoria.
+                { text: "Quebre um dos cristais para analisar a sua luz.", next: 'break_crystal', vices: { cruelty: 3, futility: 1 } },
+                { text: "Ignore a criatura e procure um atalho, não há tempo para desvios.", next: 'ignore_creature', vices: { futility: 3 } }
             ]
         },
         'path_of_shadow': {
             narrative: "O caminho da sombra o leva a um abismo. Uma ponte de pedra, coberta de runas, estende-se sobre o vazio. No centro, uma gárgula de pedra murmura enigmas.",
             choices: [
-                { text: "Tente decifrar as runas e o enigma da gárgula.", next: 'solve_enigma', virtues: { wisdom: 2 } },
-                { text: "Tente pular o abismo com um salto ousado.", next: 'jump_abyss', virtues: { courage: 2 } },
-                { text: "Ofereça algo de valor à gárgula em troca de passagem.", next: 'bribe_gargoyle', vices: { ambition: 1 } }
+                { text: "Tente decifrar as runas e o enigma da gárgula.", next: 'solve_enigma', virtues: { wisdom: 3 } }, // Aumentado para 3
+                { text: "Tente pular o abismo com um salto ousado.", next: 'jump_abyss', virtues: { courage: 3 } }, // Aumentado para 3
+                { text: "Ofereça algo de valor à gárgula em troca de passagem.", next: 'bribe_gargoyle', vices: { ambition: 2 } } // Aumentado para 2
             ]
         },
         'heal_creature': {
             narrative: "Sua compaixão cura a criatura. Ela, em gratidão, revela que a próxima etapa da sua jornada está em um pântano e lhe entrega uma flor luminosa que repele as criaturas das trevas. Você continua sua jornada.",
             choices: [
                 { text: "Continue sua jornada para o pântano.", next: 'swamp_journey', virtues: { compassion: 1 } },
-                // Aumentei o ganho de sabedoria na escolha anterior para que este requisito seja alcançado.
-                { text: "Analise a criatura para aprender sua linguagem.", next: 'learn_language', virtues: { wisdom: 2, compassion: 1 }, required: { wisdom: 2 } }
+                // Agora o jogador terá 2 pontos de sabedoria e poderá escolher esta opção.
+                { text: "Analise a criatura para aprender sua linguagem.", next: 'learn_language', virtues: { wisdom: 3, compassion: 1 }, required: { wisdom: 2 } }
             ]
         },
         'learn_language': {
@@ -202,7 +203,8 @@
         'jump_abyss': {
             narrative: "Você decide saltar o abismo. Sua coragem é posta à prova.",
             choices: [
-                { text: "Continue com o seu salto.", next: 'success_jump', virtues: { courage: 2 }, required: { courage: 2 } },
+                // Com o ganho de 3 no início, o jogador terá 3 de coragem e poderá fazer esta escolha.
+                { text: "Continue com o seu salto.", next: 'success_jump', virtues: { courage: 2 }, required: { courage: 3 } },
                 { text: "Desistir e retornar para a ponte.", next: 'fail_jump', vices: { futility: 2 } }
             ]
         },
@@ -221,7 +223,8 @@
         'bribe_gargoyle': {
             narrative: "Você oferece um objeto de valor à gárgula. Ela examina o item com interesse. Sua ambição é posta à prova.",
             choices: [
-                { text: "Ofereça mais itens de valor para a gárgula.", next: 'bribe_success', vices: { ambition: 2 }, required: { ambition: 1 } },
+                // O jogador terá 2 pontos de ambição e poderá fazer esta escolha.
+                { text: "Ofereça mais itens de valor para a gárgula.", next: 'bribe_success', vices: { ambition: 3 }, required: { ambition: 2 } },
                 { text: "O objeto não é suficiente. Deixe-a e retorne para a trilha principal.", next: 'bribe_fail' }
             ]
         },
@@ -246,7 +249,8 @@
         'swamp_journey_advanced': {
             narrative: "O pântano é um labirinto, mas a sua nova compreensão do bosque te guia. Você encontra uma antiga árvore sábia, que te oferece um último teste de sabedoria.",
             choices: [
-                { text: "Tente responder a um enigma.", next: 'riddle_of_the_ancient_tree', virtues: { wisdom: 1 }, required: { wisdom: 3 } },
+                // Aumentado os requisitos e os ganhos para que este caminho seja mais desafiador e gratificante.
+                { text: "Tente responder a um enigma.", next: 'riddle_of_the_ancient_tree', virtues: { wisdom: 3 }, required: { wisdom: 3 } },
                 { text: "Desvie-se da árvore para economizar tempo.", next: 'skip_the_riddle', vices: { futility: 1 } }
             ]
         },
@@ -386,12 +390,11 @@
             let requiredStatsText = "";
             
             if (choice.required) {
-                // Constrói a string de requisitos e verifica se o jogador atende a eles
                 const requiredStatEntries = Object.entries(choice.required);
                 requiredStatsText = requiredStatEntries.map(([key, value]) => `[Requer ${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}]`).join(' ');
                 
                 for (const [stat, value] of requiredStatEntries) {
-                    // Verifica se o stat é uma virtude ou um vício
+                    // Verifica se o stat é uma virtude ou um vício para pegar o valor correto
                     const currentStatValue = stats.virtues[stat] !== undefined ? stats.virtues[stat] : stats.vices[stat];
                     if (currentStatValue < value) {
                         canTakeChoice = false;
