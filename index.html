@@ -121,527 +121,314 @@
             },
             
             // ------------------------------------------------------------------------------------------------
-            // Caminho do Guerreiro
+            // Caminho do Guerreiro (Guerreiro: Força e Coragem)
             // ------------------------------------------------------------------------------------------------
             'warrior_path_1': {
-                narrative: "Uma criatura monstruosa surge na sua frente, bloqueando a trilha. O que você faz?",
+                narrative: "Você encontra um cavaleiro ferido. Sua armadura está quebrada e ele mal consegue ficar em pé. O que você faz?",
                 answers: [
-                    { text: "Ataca com toda a força.", next: 'warrior_path_2a', xp: 100 },
-                    { text: "Procura uma fraqueza na armadura da criatura.", next: 'warrior_path_2b', xp: 75 },
-                    { text: "Tenta intimidar a criatura com um grito de guerra.", next: 'warrior_path_2c', xp: 25 },
-                    { text: "Tenta negociar a passagem, oferecendo sua arma.", next: 'bad_end', xp: 10 }
+                    { text: "Ajuda o cavaleiro, oferecendo-lhe água e curativos.", next: 'warrior_path_2a', xp: 100 },
+                    { text: "Ignora-o e continua seu caminho. Sua jornada é mais importante.", next: 'warrior_path_2b', xp: 25 },
+                    { text: "Tenta roubar sua espada e armadura, ele parece indefeso.", next: 'warrior_path_2c', xp: -50 },
+                    { text: "Pede ao cavaleiro para se juntar à sua jornada.", next: 'warrior_path_2d', xp: 50 }
                 ]
             },
             'warrior_path_2a': {
-                narrative: "Seu ataque é poderoso. A criatura recua, mas não está derrotada. Ela se prepara para um contra-ataque. O que você faz?",
+                narrative: "O cavaleiro recupera suas forças e, grato, revela que estava protegendo uma antiga relíquia na caverna à frente. Ele oferece seu escudo como um presente. Você aceita o escudo e se prepara para a caverna. O que você faz?",
                 answers: [
-                    { text: "Mantém a ofensiva e ataca novamente.", next: 'warrior_path_3a', xp: 80 },
-                    { text: "Recua para uma posição defensiva.", next: 'warrior_path_3b', xp: 50 },
-                    { text: "Tenta flanquear a criatura.", next: 'warrior_path_3c', xp: 70 },
-                    { text: "Joga sua espada no chão e se rende.", next: 'bad_end', xp: 10 }
+                    { text: "Siga o conselho do cavaleiro e entre na caverna.", next: 'warrior_path_3a', xp: 120 },
+                    { text: "Deixa o escudo e procura um atalho para a floresta.", next: 'warrior_path_3b', xp: 80 },
+                    { text: "Agradece o escudo e parte para a cidade mais próxima.", next: 'warrior_path_3c', xp: 60 },
+                    { text: "Desafia o cavaleiro para um duelo de honra.", next: 'warrior_path_3d', xp: 10 }
                 ]
             },
             'warrior_path_2b': {
-                narrative: "Você encontra uma pequena rachadura. Um ataque bem posicionado poderia ser o fim dela. O que você faz?",
+                narrative: "Você o ignora, mas a floresta logo fica mais densa e sombria. Você ouve o som de passos pesados atrás de você. O que você faz?",
                 answers: [
-                    { text: "Aproveita a oportunidade e ataca a fraqueza.", next: 'warrior_path_4a', xp: 120 },
-                    { text: "Tenta atrair a criatura para uma armadilha.", next: 'warrior_path_4b', xp: 90 },
-                    { text: "Grita para a criatura, tentando desorientá-la.", next: 'warrior_path_4c', xp: 40 },
-                    { text: "Corre para a floresta para se esconder.", next: 'warrior_path_4d', xp: 20 }
+                    { text: "Prepara sua arma e espera pelo confronto.", next: 'warrior_path_4a', xp: 75 },
+                    { text: "Corre o mais rápido possível.", next: 'warrior_path_4b', xp: 50 },
+                    { text: "Tenta se esconder em um arbusto espesso.", next: 'warrior_path_4c', xp: 40 },
+                    { text: "Grita para a criatura, esperando intimidá-la.", next: 'warrior_path_4d', xp: 20 }
                 ]
             },
             'warrior_path_2c': {
-                narrative: "Seu grito de guerra ecoa na floresta, assustando a criatura. Ela recua e você tem a chance de seguir em frente. O que você faz?",
+                narrative: "O cavaleiro, mesmo ferido, é mais forte do que você pensava. Ele te desarma com facilidade e o deixa desarmado e envergonhado.",
                 answers: [
-                    { text: "Avança rapidamente pela trilha.", next: 'warrior_path_5a', xp: 60 },
-                    { text: "Procura por tesouros que a criatura possa ter deixado para trás.", next: 'warrior_path_5b', xp: 30 },
-                    { text: "Siga a criatura, para ter certeza que ela não voltará.", next: 'warrior_path_5c', xp: 50 },
-                    { text: "Tenta imitar o som da criatura.", next: 'warrior_path_5d', xp: 10 }
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                ]
+            },
+            'warrior_path_2d': {
+                narrative: "O cavaleiro aceita se juntar a você, mas logo em seguida vocês são emboscados por um grupo de bandidos. O que você faz?",
+                answers: [
+                    { text: "Luta ao lado do cavaleiro.", next: 'warrior_path_5a', xp: 150 },
+                    { text: "Foge e deixa o cavaleiro para trás.", next: 'warrior_path_5b', xp: -200 },
+                    { text: "Tenta negociar a passagem, oferecendo seus bens.", next: 'warrior_path_5c', xp: 10 }
                 ]
             },
             'warrior_path_3a': {
-                narrative: "Sua ofensiva contínua pega a criatura de surpresa, derrotando-a de vez. Você avança para uma planície aberta. O que você faz?",
+                narrative: "O escudo do cavaleiro ilumina o caminho, e você encontra a relíquia. Você a pega e se sente mais forte do que nunca.",
                 answers: [
-                    { text: "Siga em frente em direção a uma montanha distante.", next: 'warrior_path_6a', xp: 150 },
-                    { text: "Examine as ruínas de uma antiga fortaleza.", next: 'warrior_path_6b', xp: 120 },
-                    { text: "Descanse para recuperar as energias.", next: 'warrior_path_6c', xp: 70 },
-                    { text: "Tenta encontrar comida e água na área.", next: 'warrior_path_6d', xp: 50 }
+                    { text: "Continue sua jornada para a cidade.", next: 'warrior_path_6a', xp: 200 }
                 ]
             },
             'warrior_path_3b': {
-                narrative: "A posição defensiva permite que você analise a criatura. Você percebe que a sua única fraqueza é a cabeça. O que você faz?",
+                narrative: "Você encontra um atalho, mas ele leva a um pântano cheio de criaturas. O que você faz?",
                 answers: [
-                    { text: "Ataca a cabeça da criatura com um golpe final.", next: 'warrior_path_7a', xp: 130 },
-                    { text: "Tenta se defender com o escudo.", next: 'warrior_path_7b', xp: 80 },
-                    { text: "Cria uma distração para fugir.", next: 'warrior_path_7c', xp: 60 },
-                    { text: "Tenta atrair a criatura para o penhasco.", next: 'warrior_path_7d', xp: 90 }
+                    { text: "Luta contra as criaturas.", next: 'warrior_path_7a', xp: 100 },
+                    { text: "Tenta encontrar outro caminho.", next: 'warrior_path_7b', xp: 50 }
                 ]
             },
             'warrior_path_3c': {
-                narrative: "Seu flanco surpreende a criatura, permitindo que você a derrote. Você continua sua jornada. O que você faz?",
+                narrative: "Você chega a uma cidade, mas ela está sob um ataque de um exército de mortos-vivos. O que você faz?",
                 answers: [
-                    { text: "Siga para a cidade mais próxima.", next: 'warrior_path_8a', xp: 110 },
-                    { text: "Continue em direção a uma caverna.", next: 'warrior_path_8b', xp: 80 },
-                    { text: "Procura por um rio para se refrescar.", next: 'warrior_path_8c', xp: 50 },
-                    { text: "Tenta se comunicar com os animais da floresta.", next: 'warrior_path_8d', xp: 30 }
+                    { text: "Ajuda a cidade.", next: 'warrior_path_8a', xp: 150 },
+                    { text: "Ignora e segue seu caminho.", next: 'warrior_path_8b', xp: 80 }
+                ]
+            },
+            'warrior_path_3d': {
+                narrative: "O cavaleiro aceita o desafio, mas você se sente fraco e não consegue lutar. Ele te derrota com facilidade.",
+                answers: [
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
             'warrior_path_4a': {
-                narrative: "Seu golpe final é preciso e fatal. A criatura é derrotada. Você avança.",
+                narrative: "A criatura é um lobo gigante. Sua luta é épica, e você o derrota. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
             'warrior_path_4b': {
-                narrative: "A criatura é levada para a armadilha. Você avança.",
+                narrative: "Você corre, mas a criatura é mais rápida. Você fica preso.",
+                answers: [
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                ]
+            },
+            'warrior_path_4c': {
+                narrative: "Você se esconde, mas a criatura te encontra. Você fica preso.",
+                answers: [
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                ]
+            },
+            'warrior_path_4d': {
+                narrative: "Seu grito de guerra intimida a criatura, que recua. Você avança.",
+                answers: [
+                    { text: "Aproveite a oportunidade e fuja.", next: 'end_neutral', xp: 50 }
+                ]
+            },
+            'warrior_path_5a': {
+                narrative: "Você luta ao lado do cavaleiro e juntos vocês derrotam os bandidos. O cavaleiro, grato, te dá sua armadura e segue seu próprio caminho. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
-            'warrior_path_4c': {
-                narrative: "A criatura se assusta com o seu grito, mas rapidamente se recupera e te ataca. Você se machuca e não consegue avançar. O que você faz?",
-                answers: [
-                    { text: "Tenta lutar novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_4d': {
-                narrative: "Você corre e se esconde, mas a criatura te persegue. O que você faz?",
-                answers: [
-                    { text: "Tenta lutar novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_5a': {
-                narrative: "Você avança rapidamente pela trilha, e encontra um vilarejo amigável. Você é um herói.",
-                answers: [
-                    { text: "Aceita o convite para ficar.", next: 'end_good', xp: 100 },
-                    { text: "Continua sua jornada.", next: 'end_neutral', xp: 50 }
-                ]
-            },
             'warrior_path_5b': {
-                narrative: "Você encontra um tesouro. Você é um aventureiro sortudo.",
+                narrative: "Você foge e deixa o cavaleiro para trás. Ele é derrotado e você se sente envergonhado.",
                 answers: [
-                    { text: "Siga para a cidade.", next: 'end_neutral', xp: 50 }
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
             'warrior_path_5c': {
-                narrative: "Você segue a criatura e ela te ataca novamente. Você se machuca e não consegue avançar.",
-                answers: [
-                    { text: "Tenta lutar novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_5d': {
-                narrative: "Você imita o som da criatura, mas acaba atraindo mais monstros. Você fica preso.",
+                narrative: "Você tenta negociar, mas os bandidos te roubam e te deixam para trás. Você fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
             'warrior_path_6a': {
-                narrative: "Você sobe a montanha, e lá, encontra um artefato misterioso. O que você faz?",
+                narrative: "Você chega na cidade e a relíquia que você tem faz as pessoas te reverenciarem como um deus. O que você faz?",
                 answers: [
-                    { text: "Toca no artefato.", next: 'warrior_path_9a', xp: 150 },
-                    { text: "Deixa o artefato em paz.", next: 'warrior_path_9b', xp: 100 }
-                ]
-            },
-            'warrior_path_6b': {
-                narrative: "Você encontra as ruínas de uma antiga fortaleza. O que você faz?",
-                answers: [
-                    { text: "Entra para explorar.", next: 'warrior_path_10a', xp: 120 },
-                    { text: "Siga em frente e ignora as ruínas.", next: 'warrior_path_10b', xp: 70 }
-                ]
-            },
-            'warrior_path_6c': {
-                narrative: "Você descansa, mas é pego por um grupo de bandidos. O que você faz?",
-                answers: [
-                    { text: "Luta contra os bandidos.", next: 'warrior_path_11a', xp: 100 },
-                    { text: "Tenta fugir.", next: 'warrior_path_11b', xp: 50 }
-                ]
-            },
-            'warrior_path_6d': {
-                narrative: "Você encontra frutas venenosas. Você come e se sente mal. O que você faz?",
-                answers: [
-                    { text: "Continua a jornada.", next: 'warrior_path_12a', xp: 20 },
-                    { text: "Tenta vomitar.", next: 'warrior_path_12b', xp: 40 }
+                    { text: "Governa a cidade como um rei.", next: 'end_as_a_king', xp: 200 }
                 ]
             },
             'warrior_path_7a': {
-                narrative: "Seu ataque à cabeça da criatura é um sucesso. Você avança.",
+                narrative: "Você luta contra as criaturas e vence. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
             'warrior_path_7b': {
-                narrative: "Sua defesa é inútil contra a força da criatura. Você fica preso.",
+                narrative: "Você tenta encontrar outro caminho, mas se perde e fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_7c': {
-                narrative: "Sua distração falha. A criatura te pega. O que você faz?",
-                answers: [
-                    { text: "Luta novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_7d': {
-                narrative: "Você atrai a criatura para o penhasco. Você avança.",
-                answers: [
-                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
-                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
             'warrior_path_8a': {
-                narrative: "Você chega a uma cidade, mas ela está sob um ataque de um exército de mortos-vivos. O que você faz?",
-                answers: [
-                    { text: "Ajuda a cidade.", next: 'warrior_path_13a', xp: 150 },
-                    { text: "Ignora e segue seu caminho.", next: 'warrior_path_13b', xp: 80 }
-                ]
-            },
-            'warrior_path_8b': {
-                narrative: "Você chega a uma caverna, mas ela está cheia de morcegos. O que você faz?",
-                answers: [
-                    { text: "Luta contra os morcegos.", next: 'warrior_path_14a', xp: 100 },
-                    { text: "Tenta assustar os morcegos.", next: 'warrior_path_14b', xp: 70 }
-                ]
-            },
-            'warrior_path_8c': {
-                narrative: "Você encontra um rio para se refrescar, mas a água está contaminada. O que você faz?",
-                answers: [
-                    { text: "Bebe a água mesmo assim.", next: 'warrior_path_15a', xp: 10 },
-                    { text: "Procura outra fonte de água.", next: 'warrior_path_15b', xp: 50 }
-                ]
-            },
-            'warrior_path_8d': {
-                narrative: "Você tenta se comunicar com os animais, mas eles o ignoram. Você fica preso.",
-                answers: [
-                    { text: "Continua sua jornada.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_9a': {
-                narrative: "Você toca no artefato e ele se transforma em um portal. Você avança.",
-                answers: [
-                    { text: "Entra no portal.", next: 'end_good', xp: 200 }
-                ]
-            },
-            'warrior_path_9b': {
-                narrative: "Você ignora o artefato e continua sua jornada. Você encontra um vilarejo amigável. Você é um herói.",
-                answers: [
-                    { text: "Aceita o convite para ficar.", next: 'end_neutral', xp: 100 }
-                ]
-            },
-            'warrior_path_10a': {
-                narrative: "Você entra nas ruínas, mas é pego por um grupo de esqueletos. O que você faz?",
-                answers: [
-                    { text: "Luta contra os esqueletos.", next: 'warrior_path_16a', xp: 150 },
-                    { text: "Tenta fugir.", next: 'warrior_path_16b', xp: 80 }
-                ]
-            },
-            'warrior_path_10b': {
-                narrative: "Você ignora as ruínas e continua sua jornada. Você encontra um vilarejo amigável. Você é um herói.",
-                answers: [
-                    { text: "Aceita o convite para ficar.", next: 'end_neutral', xp: 100 }
-                ]
-            },
-            'warrior_path_11a': {
-                narrative: "Você luta contra os bandidos e vence. Você avança.",
-                answers: [
-                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
-                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_11b': {
-                narrative: "Você tenta fugir, mas é pego pelos bandidos. O que você faz?",
-                answers: [
-                    { text: "Luta novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_12a': {
-                narrative: "Você continua sua jornada, mas se sente fraco. Você não consegue avançar. O que você faz?",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_12b': {
-                narrative: "Você vomita a fruta envenenada. Você se sente melhor, mas ainda está fraco. O que você faz?",
-                answers: [
-                    { text: "Continua sua jornada.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_13a': {
                 narrative: "Você ajuda a cidade, e eles te dão um tesouro. Você é um herói.",
                 answers: [
                     { text: "Aceita o convite para ficar.", next: 'end_good', xp: 200 }
                 ]
             },
-            'warrior_path_13b': {
+            'warrior_path_8b': {
                 narrative: "Você ignora a cidade, e continua sua jornada. Você encontra um vilarejo amigável. Você é um herói.",
                 answers: [
                     { text: "Aceita o convite para ficar.", next: 'end_neutral', xp: 100 }
                 ]
             },
-            'warrior_path_14a': {
-                narrative: "Você luta contra os morcegos e vence. Você avança.",
-                answers: [
-                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
-                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_14b': {
-                narrative: "Você tenta assustar os morcegos, mas eles te atacam. Você se machuca e não consegue avançar.",
-                answers: [
-                    { text: "Luta novamente.", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_15a': {
-                narrative: "Você bebe a água contaminada e se sente mal. Você não consegue avançar. O que você faz?",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'warrior_path_15b': {
-                narrative: "Você encontra outra fonte de água e se sente melhor. Você avança.",
-                answers: [
-                    { text: "Continua sua jornada.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_16a': {
-                narrative: "Você luta contra os esqueletos e vence. Você avança.",
-                answers: [
-                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
-                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'warrior_path_16b': {
-                narrative: "Você tenta fugir, mas é pego pelos esqueletos. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            
+
             // ------------------------------------------------------------------------------------------------
-            // Caminho do Mago
+            // Caminho do Mago (Mago: Conhecimento e Magia)
             // ------------------------------------------------------------------------------------------------
             'mage_path_1': {
-                narrative: "Um rio de lava impede seu caminho. O que você faz?",
+                narrative: "Você encontra uma antiga biblioteca mágica, mas a entrada está selada por um enigma. O que você faz?",
                 answers: [
-                    { text: "Conjura uma ponte de gelo sobre a lava.", next: 'mage_path_2a', xp: 100 },
-                    { text: "Tenta usar telecinese para levitar sobre o rio.", next: 'mage_path_2b', xp: 75 },
-                    { text: "Cria uma bola de fogo para derreter a lava.", next: 'mage_path_2c', xp: 10 },
-                    { text: "Tenta se comunicar com os elementais de fogo.", next: 'mage_path_2d', xp: 25 }
+                    { text: "Usa seu conhecimento arcano para decifrar o enigma.", next: 'mage_path_2a', xp: 100 },
+                    { text: "Tenta forçar a entrada com um feitiço de destruição.", next: 'mage_path_2b', xp: 25 },
+                    { text: "Procura uma passagem secreta ou uma chave.", next: 'mage_path_2c', xp: 75 },
+                    { text: "Invoca um espírito da floresta para pedir ajuda.", next: 'mage_path_2d', xp: 50 }
                 ]
             },
             'mage_path_2a': {
-                narrative: "A ponte de gelo é sólida. Você atravessa o rio de lava com segurança. Do outro lado, encontra um pântano místico. O que você faz?",
+                narrative: "O enigma é resolvido, e a porta se abre. Dentro, você encontra um tomo de magia antiga e rara. O que você faz?",
                 answers: [
-                    { text: "Tenta levitar sobre o pântano.", next: 'mage_path_3a', xp: 120 },
-                    { text: "Cria uma bola de fogo para iluminar o caminho.", next: 'mage_path_3b', xp: 90 },
-                    { text: "Cria um escudo de magia para se proteger.", next: 'mage_path_3c', xp: 70 },
-                    { text: "Tenta se comunicar com os espíritos do pântano.", next: 'mage_path_3d', xp: 50 }
+                    { text: "Estuda o tomo para aprender um feitiço poderoso.", next: 'mage_path_3a', xp: 150 },
+                    { text: "Ignora o tomo e procura por tesouros.", next: 'mage_path_3b', xp: 80 },
+                    { text: "Leva o tomo consigo para o próximo destino.", next: 'mage_path_3c', xp: 100 },
+                    { text: "Tenta vender o tomo para um mercador.", next: 'mage_path_3d', xp: 50 }
                 ]
             },
             'mage_path_2b': {
-                narrative: "Sua magia não é forte o suficiente. Você cai no rio de lava. O fim de sua jornada...",
-                answers: [
-                    { text: "Tentar novamente...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'mage_path_2c': {
-                narrative: "A lava derrete sua bola de fogo, e o rio cresce. Você fica preso.",
+                narrative: "Seu feitiço de destruição falha, e uma onda de energia mágica te acerta, te deixando fraco e sem magia.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
-            'mage_path_2d': {
-                narrative: "Os elementais, embora assustadores, são amigáveis. Eles abrem um caminho para você passar. Você continua sua jornada. O que você faz?",
+            'mage_path_2c': {
+                narrative: "Você encontra uma pequena rachadura na parede da biblioteca, por onde consegue entrar. O que você faz?",
                 answers: [
-                    { text: "Siga para a montanha.", next: 'mage_path_4a', xp: 100 }
+                    { text: "Entra na biblioteca.", next: 'mage_path_4a', xp: 120 },
+                    { text: "Procura por um atalho para a floresta.", next: 'mage_path_4b', xp: 80 }
+                ]
+            },
+            'mage_path_2d': {
+                narrative: "O espírito da floresta te ajuda a abrir a porta. O que você faz?",
+                answers: [
+                    { text: "Entra na biblioteca.", next: 'mage_path_5a', xp: 100 },
+                    { text: "Tenta roubar o espírito.", next: 'mage_path_5b', xp: -50 }
                 ]
             },
             'mage_path_3a': {
-                narrative: "Sua levitação funciona. Você passa pelo pântano e encontra um vilarejo amaldiçoado. O que você faz?",
+                narrative: "Você estuda o tomo e aprende um feitiço de teletransporte. Você se teletransporta para um castelo distante.",
                 answers: [
-                    { text: "Tenta remover a maldição.", next: 'mage_path_5a', xp: 150 },
-                    { text: "Procura um tesouro.", next: 'mage_path_5b', xp: 100 }
+                    { text: "Explora o castelo.", next: 'mage_path_6a', xp: 200 }
                 ]
             },
             'mage_path_3b': {
-                narrative: "A sua bola de fogo ilumina o caminho, mas ela também atrai um grupo de criaturas. O que você faz?",
+                narrative: "Você encontra um tesouro, mas ele é protegido por um golem. O que você faz?",
                 answers: [
-                    { text: "Luta contra as criaturas.", next: 'mage_path_6a', xp: 130 },
-                    { text: "Tenta fugir.", next: 'mage_path_6b', xp: 80 }
+                    { text: "Luta contra o golem.", next: 'mage_path_7a', xp: 150 },
+                    { text: "Tenta se comunicar com o golem.", next: 'mage_path_7b', xp: 100 }
                 ]
             },
             'mage_path_3c': {
-                narrative: "Seu escudo te protege das criaturas, e você consegue passar. Você continua sua jornada.",
+                narrative: "Você leva o tomo consigo. A floresta começa a ficar mais escura. O que você faz?",
                 answers: [
-                    { text: "Siga em frente.", next: 'end_good', xp: 100 }
+                    { text: "Usa o tomo para criar luz.", next: 'mage_path_8a', xp: 120 },
+                    { text: "Tenta fugir da escuridão.", next: 'mage_path_8b', xp: 80 }
                 ]
             },
             'mage_path_3d': {
-                narrative: "Você tenta se comunicar com os espíritos, mas eles te ignoram. Você fica preso.",
+                narrative: "Você tenta vender o tomo, mas o mercador te rouba. Você fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
             'mage_path_4a': {
-                narrative: "Você chega a uma montanha, mas ela está cercada por uma barreira mágica. O que você faz?",
+                narrative: "Você entra na biblioteca, mas ela está cheia de livros amaldiçoados. O que você faz?",
                 answers: [
-                    { text: "Tenta quebrar a barreira.", next: 'mage_path_7a', xp: 150 },
-                    { text: "Procura um portal para a montanha.", next: 'mage_path_7b', xp: 100 }
+                    { text: "Tenta remover a maldição dos livros.", next: 'mage_path_9a', xp: 150 },
+                    { text: "Procura por um tesouro.", next: 'mage_path_9b', xp: 100 }
+                ]
+            },
+            'mage_path_4b': {
+                narrative: "Você encontra um atalho, mas ele leva a um pântano cheio de criaturas. O que você faz?",
+                answers: [
+                    { text: "Luta contra as criaturas.", next: 'mage_path_10a', xp: 100 },
+                    { text: "Tenta encontrar outro caminho.", next: 'mage_path_10b', xp: 50 }
                 ]
             },
             'mage_path_5a': {
-                narrative: "Sua magia é forte o suficiente para remover a maldição. Você é um herói.",
+                narrative: "Você entra na biblioteca, mas ela está cheia de livros amaldiçoados. O que você faz?",
                 answers: [
-                    { text: "Aceita o convite para ficar.", next: 'end_good', xp: 200 }
+                    { text: "Tenta remover a maldição dos livros.", next: 'mage_path_9a', xp: 150 },
+                    { text: "Procura por um tesouro.", next: 'mage_path_9b', xp: 100 }
                 ]
             },
             'mage_path_5b': {
-                narrative: "Você procura por um tesouro, mas encontra um grupo de criaturas. Você fica preso.",
+                narrative: "Você tenta roubar o espírito, mas ele te ataca. Você fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
             'mage_path_6a': {
-                narrative: "Você luta contra as criaturas e vence. Você avança.",
+                narrative: "Você explora o castelo e descobre que ele foi abandonado. Você se sente em casa.",
                 answers: [
-                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
-                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'mage_path_6b': {
-                narrative: "Você tenta fugir, mas é pego pelas criaturas. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                    { text: "Governa o castelo.", next: 'end_as_a_king', xp: 200 }
                 ]
             },
             'mage_path_7a': {
-                narrative: "Sua magia é forte o suficiente para quebrar a barreira. Você avança.",
+                narrative: "Você luta contra o golem e vence. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
             'mage_path_7b': {
-                narrative: "Você encontra um portal, mas ele te leva a um lugar perigoso. O que você faz?",
+                narrative: "Você tenta se comunicar com o golem, e ele te ajuda a encontrar o tesouro. Você avança.",
                 answers: [
-                    { text: "Tenta fugir.", next: 'mage_path_8a', xp: 80 },
-                    { text: "Luta contra as criaturas.", next: 'mage_path_8b', xp: 120 }
+                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
+                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
             'mage_path_8a': {
-                narrative: "Você tenta fugir, mas é pego pelas criaturas. Você fica preso.",
+                narrative: "Você usa o tomo para criar luz. Você avança.",
+                answers: [
+                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
+                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
+                ]
+            },
+            'mage_path_8b': {
+                narrative: "Você tenta fugir da escuridão, mas fica perdido. Você fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
-            'mage_path_8b': {
+            'mage_path_9a': {
+                narrative: "Você remove a maldição dos livros e se torna um mago lendário. Você avança.",
+                answers: [
+                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
+                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
+                ]
+            },
+            'mage_path_9b': {
+                narrative: "Você procura por um tesouro, mas ele é protegido por um golem. O que você faz?",
+                answers: [
+                    { text: "Luta contra o golem.", next: 'mage_path_11a', xp: 150 },
+                    { text: "Tenta se comunicar com o golem.", next: 'mage_path_11b', xp: 100 }
+                ]
+            },
+            'mage_path_10a': {
                 narrative: "Você luta contra as criaturas e vence. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
-            
-            // ------------------------------------------------------------------------------------------------
-            // Caminho do Ladrão
-            // ------------------------------------------------------------------------------------------------
-            'rogue_path_1': {
-                narrative: "Você encontra uma fechadura antiga e complexa em um portão de ferro. Você precisa abri-la para passar.",
-                answers: [
-                    { text: "Usa suas ferramentas para arrombar a fechadura com precisão.", next: 'rogue_path_2a', xp: 100 },
-                    { text: "Tenta encontrar a chave escondida por perto.", next: 'rogue_path_2b', xp: 75 },
-                    { text: "Força o portão com o ombro.", next: 'rogue_path_2c', xp: 10 },
-                    { text: "Procura um caminho alternativo.", next: 'rogue_path_2d', xp: 50 }
-                ]
-            },
-            'rogue_path_2a': {
-                narrative: "Com a fechadura aberta, você continua sua jornada através do portão de ferro. Do outro lado, você encontra um labirinto. O que você faz?",
-                answers: [
-                    { text: "Tenta encontrar a saída.", next: 'rogue_path_3a', xp: 120 },
-                    { text: "Procura por um tesouro.", next: 'rogue_path_3b', xp: 90 },
-                    { text: "Cria um mapa do labirinto.", next: 'rogue_path_3c', xp: 70 },
-                    { text: "Tenta se comunicar com os espíritos do labirinto.", next: 'rogue_path_3d', xp: 50 }
-                ]
-            },
-            'rogue_path_2b': {
-                narrative: "Após uma busca cuidadosa, você encontra uma chave escondida debaixo de uma pedra. O que você faz?",
-                answers: [
-                    { text: "Abra o portão com a chave.", next: 'rogue_path_4a', xp: 100 }
-                ]
-            },
-            'rogue_path_2c': {
-                narrative: "O portão de ferro não se move. Você se machuca e fica preso.",
+            'mage_path_10b': {
+                narrative: "Você tenta encontrar outro caminho, mas se perde e fica preso.",
                 answers: [
                     { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
                 ]
             },
-            'rogue_path_2d': {
-                narrative: "Você descobre uma passagem secreta. Você continua sua jornada. O que você faz?",
+            'mage_path_11a': {
+                narrative: "Você luta contra o golem e vence. Você avança.",
                 answers: [
-                    { text: "Siga pelo túnel secreto.", next: 'rogue_path_5a', xp: 100 }
+                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
+                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
                 ]
             },
-            'rogue_path_3a': {
-                narrative: "Você encontra a saída do labirinto, mas também encontra um dragão. O que você faz?",
-                answers: [
-                    { text: "Tenta roubar o tesouro do dragão.", next: 'rogue_path_6a', xp: 150 },
-                    { text: "Tenta se esconder do dragão.", next: 'rogue_path_6b', xp: 100 }
-                ]
-            },
-            'rogue_path_3b': {
-                narrative: "Você procura por um tesouro, mas encontra um grupo de criaturas. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'rogue_path_3c': {
-                narrative: "Você cria um mapa do labirinto, e consegue encontrar a saída. Você continua sua jornada.",
-                answers: [
-                    { text: "Siga em frente.", next: 'end_good', xp: 100 }
-                ]
-            },
-            'rogue_path_3d': {
-                narrative: "Você tenta se comunicar com os espíritos, mas eles te ignoram. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'rogue_path_4a': {
-                narrative: "Com a fechadura aberta, você continua sua jornada através do portão de ferro. Você avança.",
-                answers: [
-                    { text: "Siga o caminho à direita.", next: 'end_good', xp: 100 },
-                    { text: "Siga o caminho à esquerda.", next: 'end_neutral', xp: 50 }
-                ]
-            },
-            'rogue_path_5a': {
-                narrative: "Você segue pelo túnel secreto, mas ele te leva a um lugar perigoso. O que você faz?",
-                answers: [
-                    { text: "Tenta fugir.", next: 'rogue_path_7a', xp: 80 },
-                    { text: "Luta contra as criaturas.", next: 'rogue_path_7b', xp: 120 }
-                ]
-            },
-            'rogue_path_6a': {
-                narrative: "Você tenta roubar o tesouro do dragão, mas é pego por ele. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'rogue_path_6b': {
-                narrative: "Você se esconde do dragão e consegue passar. Você continua sua jornada.",
-                answers: [
-                    { text: "Siga em frente.", next: 'end_good', xp: 100 }
-                ]
-            },
-            'rogue_path_7a': {
-                narrative: "Você tenta fugir, mas é pego pelas criaturas. Você fica preso.",
-                answers: [
-                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
-                ]
-            },
-            'rogue_path_7b': {
-                narrative: "Você luta contra as criaturas e vence. Você avança.",
+            'mage_path_11b': {
+                narrative: "Você tenta se comunicar com o golem, e ele te ajuda a encontrar o tesouro. Você avança.",
                 answers: [
                     { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
                     { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
@@ -649,28 +436,92 @@
             },
 
             // ------------------------------------------------------------------------------------------------
-            // Caminho do Bardo
+            // Caminho do Ladrão (Ladrão: Agilidade e Astúcia)
+            // ------------------------------------------------------------------------------------------------
+            'rogue_path_1': {
+                narrative: "Você encontra uma caravana de mercadores passando. Eles parecem carregar bens valiosos. O que você faz?",
+                answers: [
+                    { text: "Tenta furtar uma das bolsas de moedas de um mercador.", next: 'rogue_path_2a', xp: 75 },
+                    { text: "Se aproxima para tentar negociar um item valioso.", next: 'rogue_path_2b', xp: 50 },
+                    { text: "Oferece-se como guia para levá-los por um atalho perigoso.", next: 'rogue_path_2c', xp: 100 },
+                    { text: "Se esconde e os deixa passar para não arriscar.", next: 'rogue_path_2d', xp: 25 }
+                ]
+            },
+            'rogue_path_2a': {
+                narrative: "Você tenta furtar uma das bolsas de moedas, mas o mercador te pega. O que você faz?",
+                answers: [
+                    { text: "Luta contra o mercador.", next: 'rogue_path_3a', xp: -100 },
+                    { text: "Tenta fugir.", next: 'rogue_path_3b', xp: -50 }
+                ]
+            },
+            'rogue_path_2b': {
+                narrative: "Você tenta negociar, mas o mercador te engana. Você fica preso.",
+                answers: [
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                ]
+            },
+            'rogue_path_2c': {
+                narrative: "Você oferece-se como guia e o mercador aceita. O que você faz?",
+                answers: [
+                    { text: "Leva-os por um atalho perigoso.", next: 'rogue_path_4a', xp: 150 },
+                    { text: "Leva-os por um atalho seguro.", next: 'rogue_path_4b', xp: 100 }
+                ]
+            },
+            'rogue_path_2d': {
+                narrative: "Você se esconde e os deixa passar. Você continua sua jornada.",
+                answers: [
+                    { text: "Siga em frente.", next: 'end_neutral', xp: 50 }
+                ]
+            },
+            'rogue_path_3a': {
+                narrative: "Você luta contra o mercador e vence. Você avança.",
+                answers: [
+                    { text: "Siga o caminho limpo.", next: 'end_good', xp: 100 },
+                    { text: "Procure por tesouros.", next: 'end_neutral', xp: 50 }
+                ]
+            },
+            'rogue_path_3b': {
+                narrative: "Você tenta fugir, mas é pego pelo mercador. Você fica preso.",
+                answers: [
+                    { text: "O fim de sua jornada...", next: 'bad_end', xp: 0 }
+                ]
+            },
+            'rogue_path_4a': {
+                narrative: "Você os leva por um atalho perigoso e eles te dão um tesouro. Você é um herói.",
+                answers: [
+                    { text: "Aceita o convite para ficar.", next: 'end_good', xp: 200 }
+                ]
+            },
+            'rogue_path_4b': {
+                narrative: "Você os leva por um atalho seguro e eles te dão um tesouro. Você é um herói.",
+                answers: [
+                    { text: "Aceita o convite para ficar.", next: 'end_neutral', xp: 100 }
+                ]
+            },
+
+            // ------------------------------------------------------------------------------------------------
+            // Caminho do Bardo (Bardo: Palavras e Encanto)
             // ------------------------------------------------------------------------------------------------
             'bard_path_1': {
-                narrative: "Você chega a uma vila amaldiçoada onde todos estão dormindo. Uma melodia suave ecoa no ar. O que você faz?",
+                narrative: "Você chega a uma vila em silêncio. Os aldeões parecem estar em um transe de tristeza. O que você faz?",
                 answers: [
-                    { text: "Canta uma canção de ninar para acalmar a maldição.", next: 'bard_path_2a', xp: 100 },
-                    { text: "Toca uma canção de guerra para despertar os aldeões.", next: 'bard_path_2b', xp: 10 },
+                    { text: "Canta uma melodia alegre para tentar animá-los.", next: 'bard_path_2a', xp: 50 },
+                    { text: "Canta uma canção de ninar para acalmar a maldição.", next: 'bard_path_2b', xp: 100 },
                     { text: "Tenta encontrar a fonte da melodia amaldiçoada.", next: 'bard_path_2c', xp: 75 },
-                    { text: "Canta uma canção de alegria para espantar a maldição.", next: 'bard_path_2d', xp: 50 }
+                    { text: "Toca uma canção de guerra para despertar os aldeões.", next: 'bard_path_2d', xp: 10 }
                 ]
             },
             'bard_path_2a': {
-                narrative: "Sua melodia remove a maldição, e os aldeões acordam, gratos. Você é um herói. O que você faz?",
+                narrative: "Sua melodia alegre não tem efeito. A tristeza dos aldeões é forte demais.",
                 answers: [
-                    { text: "Aceita o convite para ficar na vila.", next: 'bard_path_3a', xp: 150 },
-                    { text: "Continua sua jornada.", next: 'bard_path_3b', xp: 100 }
+                    { text: "Tente uma abordagem diferente.", next: 'bard_path_1', xp: 0 }
                 ]
             },
             'bard_path_2b': {
-                narrative: "A canção de guerra só assusta os aldeões, que voltam a dormir após a melodia amaldiçoada.",
+                narrative: "Sua melodia remove a maldição, e os aldeões acordam, gratos. Você é um herói.",
                 answers: [
-                    { text: "Tente uma abordagem diferente.", next: 'bard_path_1', xp: 0 }
+                    { text: "Aceita o convite para ficar na vila.", next: 'bard_path_3a', xp: 150 },
+                    { text: "Continua sua jornada.", next: 'bard_path_3b', xp: 100 }
                 ]
             },
             'bard_path_2c': {
@@ -681,7 +532,7 @@
                 ]
             },
             'bard_path_2d': {
-                narrative: "Sua canção de alegria não tem efeito. A maldição é forte demais.",
+                narrative: "A canção de guerra só assusta os aldeões, que voltam a dormir após a melodia amaldiçoada.",
                 answers: [
                     { text: "Tente uma abordagem diferente.", next: 'bard_path_1', xp: 0 }
                 ]
@@ -752,6 +603,10 @@
             'bad_ending': {
                 title: "Uma Sombra no Fim",
                 text: "Sua jornada terminou prematuramente. As sombras da floresta foram mais fortes do que sua vontade. Sua história termina aqui, esquecida no tempo. Mas talvez, um novo caminho possa ser trilhado."
+            },
+            'end_as_a_king': {
+                title: "O Fim como um Rei",
+                text: "Sua jornada o levou a se tornar um rei. Você governa com sabedoria e força, e sua lenda será lembrada para sempre."
             }
         };
 
@@ -770,7 +625,7 @@
         const xpBarEl = document.getElementById('xp-bar');
         const rulesBtn = document.getElementById('rules-btn');
         const rulesModal = document.getElementById('rules-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
+        const closeModalBtn = document = document.getElementById('close-modal-btn');
         const endModal = document.getElementById('end-modal');
         const endTitleEl = document.getElementById('end-title');
         const endTextEl = document.getElementById('end-text');
@@ -805,7 +660,9 @@
             // Se for um final, mostra a tela de final
             if (node.is_ending) {
                 let ending;
-                if (currentXP >= 300) {
+                if (nodeId.includes('end_as_a_king')) {
+                    ending = endings.end_as_a_king;
+                } else if (currentXP >= 300) {
                     ending = endings.good_ending;
                 } else if (currentXP >= 150) {
                     ending = endings.neutral_ending;
